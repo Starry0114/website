@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎</title>
+    <title>Welcome</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -51,24 +51,23 @@
 </head>
 <body>
     <div class="container">
-        <h2 id="welcome-message">欢迎!</h2>
+        <h2 id="welcome-message">Welcome!</h2>
         
         <div class="user-info">
-            <p><strong>用户名:</strong> <span id="display-username"></span></p>
-            <p><strong>邮箱:</strong> <span id="display-email"></span></p>
-            <p><strong>注册日期:</strong> <span id="display-created-at"></span></p>
+            <p><strong>Username:</strong> <span id="display-username"></span></p>
+            <p><strong>Email:</strong> <span id="display-email"></span></p>
+            <p><strong>Registration Date:</strong> <span id="display-created-at"></span></p>
         </div>
         
-        <a href="logout.php" class="logout-btn">退出登录</a>
+        <a href="logout.php" class="logout-btn">Logout</a>
     </div>
 
     <script>
-        // 检查用户是否已登录
         fetch('check_auth.php')
             .then(response => response.json())
             .then(data => {
                 if (data.authenticated) {
-                    document.getElementById('welcome-message').textContent = `欢迎, ${data.username}!`;
+                    document.getElementById('welcome-message').textContent = `Welcome, ${data.username}!`;
                     document.getElementById('display-username').textContent = data.username;
                     document.getElementById('display-email').textContent = data.email;
                     document.getElementById('display-created-at').textContent = data.created_at;

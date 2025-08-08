@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户注册</title>
+    <title>User Register</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -94,45 +94,42 @@
 </head>
 <body>
     <div class="container">
-        <h2>用户注册</h2>
+        <h2>User Register</h2>
         
-        <!-- 显示错误消息 -->
         <div id="error-message" class="error" style="display: none;"></div>
         
-        <!-- 显示成功消息 -->
         <div id="success-message" class="success" style="display: none;"></div>
         
         <form id="register-form">
             <div class="input-group">
-                <label for="username">用户名</label>
+                <label for="username">Username</label>
                 <input type="text" id="username" name="username" required>
             </div>
             
             <div class="input-group">
-                <label for="email">邮箱</label>
+                <label for="email">Email</label>
                 <input type="email" id="email" name="email" required>
             </div>
             
             <div class="input-group">
-                <label for="password">密码</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
             
             <div class="input-group">
-                <label for="confirm_password">确认密码</label>
+                <label for="confirm_password">Confirm Password</label>
                 <input type="password" id="confirm_password" name="confirm_password" required>
             </div>
             
-            <button type="submit">注册</button>
+            <button type="submit">Register</button>
             
             <div class="login-link">
-                已有账号? <a href="login.html">登录</a>
+                Have an account? <a href="login.html">Login</a>
             </div>
         </form>
     </div>
 
     <script>
-        // 处理注册表单提交
         document.getElementById('register-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -143,7 +140,7 @@
             
             // 验证密码是否匹配
             if (password !== confirmPassword) {
-                document.getElementById('error-message').textContent = '密码不匹配';
+                document.getElementById('error-message').textContent = ' Password confirmation does not match the original password';
                 document.getElementById('error-message').style.display = 'block';
                 return;
             }
@@ -165,11 +162,10 @@
             .then(response => response.json())
             .then(data => {
                 if (data.success) {
-                    document.getElementById('success-message').textContent = '注册成功！正在跳转到登录页面...';
+                    document.getElementById('success-message').textContent = 'Registration successful! Redirecting to login page...';
                     document.getElementById('success-message').style.display = 'block';
                     document.getElementById('register-form').reset();
                     
-                    // 3秒后跳转到登录页面
                     setTimeout(() => {
                         window.location.href = 'login.html?registration=success';
                     }, 2000);
@@ -180,7 +176,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('error-message').textContent = '注册时发生错误';
+                document.getElementById('error-message').textContent = 'Register error. Please try again.';
                 document.getElementById('error-message').style.display = 'block';
             });
         });

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>用户登录</title>
+    <title>User Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -93,43 +93,39 @@
 </head>
 <body>
     <div class="container">
-        <h2>用户登录</h2>
+        <h2>User Login</h2>
         
-        <!-- 显示注册成功消息 -->
         <div id="registration-success" class="success" style="display: none;">
-            注册成功！请登录
+            Registration Completed! 
         </div>
         
-        <!-- 显示错误消息 -->
         <div id="error-message" class="error" style="display: none;"></div>
         
         <form id="login-form">
             <div class="input-group">
-                <label for="username">用户名或邮箱</label>
+                <label for="username">Username Or Email</label>
                 <input type="text" id="username" name="username" required>
             </div>
             
             <div class="input-group">
-                <label for="password">密码</label>
+                <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
             
-            <button type="submit">登录</button>
+            <button type="submit">Login</button>
             
             <div class="register-link">
-                没有账号? <a href="register.html">注册</a>
+                 Don't have an account? <a href="register.html">Sign Up</a>
             </div>
         </form>
     </div>
 
     <script>
-        // 检查URL参数，显示注册成功消息
         const urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has('registration') && urlParams.get('registration') === 'success') {
             document.getElementById('registration-success').style.display = 'block';
         }
         
-        // 处理登录表单提交
         document.getElementById('login-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -154,7 +150,7 @@
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.getElementById('error-message').textContent = '登录时发生错误';
+                document.getElementById('error-message').textContent = 'Login error. Please try again.';
                 document.getElementById('error-message').style.display = 'block';
             });
         });
